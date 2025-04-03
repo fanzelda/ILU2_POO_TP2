@@ -28,37 +28,37 @@ class ControlAcheterProduitTest {
 
 	@Test
 	void testAcheterProduit() {
-		Gaulois gaulois = new Gaulois("Jean",10);
+		Gaulois gaulois = new Gaulois("Bobby",10);
 		village.ajouterHabitant(gaulois);
 		village.installerVendeur(gaulois, "fleurs", 10);
-		assertEquals(0,controlAcheterProduit.acheterProduit("Jean", 0));
-		assertEquals(2,controlAcheterProduit.acheterProduit("Jean", 2));
-		assertEquals(8,controlAcheterProduit.acheterProduit("Jean", 11));
+		assertEquals(0,controlAcheterProduit.acheterProduit("Bobby", 0));
+		assertEquals(2,controlAcheterProduit.acheterProduit("Bobby", 2));
+		assertEquals(8,controlAcheterProduit.acheterProduit("Bobby", 11));
 	}
 
 	@Test
 	void testVerifierNom() {
-		Gaulois gaulois = new Gaulois("Jean",10);
+		Gaulois gaulois = new Gaulois("Bobby",10);
 		village.ajouterHabitant(gaulois);
 		village.installerVendeur(gaulois, "fleurs", 10);
-		assertTrue(controlAcheterProduit.verifierNom("Jean"));
+		assertTrue(controlAcheterProduit.verifierNom("Bobby"));
 		assertFalse(controlAcheterProduit.verifierNom("Inconnu"));
 	}
 
 	@Test
 	void testRechercherVendeursProduit() {
-		Gaulois gaulois = new Gaulois("Jean",10);
+		Gaulois gaulois = new Gaulois("Bobby",10);
 		village.ajouterHabitant(gaulois);
 		village.installerVendeur(gaulois, "fleurs", 10);
 		assertNull(controlAcheterProduit.rechercherVendeursProduit("ordinateurs"));
 		String[] nomVendeurs = new String[1];
-		nomVendeurs[0] = "Jean";
+		nomVendeurs[0] = "Bobby";
 		assertArrayEquals(nomVendeurs,controlAcheterProduit.rechercherVendeursProduit("fleurs"));
 		Gaulois gaulois2 = new Gaulois("Pierre",10);
 		village.ajouterHabitant(gaulois2);
 		village.installerVendeur(gaulois2, "fleurs", 10);
 		String[] nomVendeurs2 = new String[2];
-		nomVendeurs2[0] = "Jean";
+		nomVendeurs2[0] = "Bobby";
 		nomVendeurs2[1] = "Pierre";
 		assertArrayEquals(nomVendeurs2,controlAcheterProduit.rechercherVendeursProduit("fleurs"));
 	}
