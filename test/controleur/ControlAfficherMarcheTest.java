@@ -1,8 +1,6 @@
 package controleur;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,8 +12,6 @@ import villagegaulois.Village;
 class ControlAfficherMarcheTest {
 	Village village = new Village("le village des irréductibles", 10, 5);
 	Chef abraracourcix = new Chef("Abraracourcix", 10, village);
-	Gaulois asterix = new Gaulois("Asterix", 6);
-	Gaulois obelix = new Gaulois("Obelix", 12);
 	private ControlAfficherMarche controlAfficherMarche;
 
 	@BeforeEach
@@ -31,11 +27,13 @@ class ControlAfficherMarcheTest {
 		assertNotNull(controlAfficherMarche, "Constructeur ne renvoie pas null");
 	}
 	
-//	@Test
-//	void testDonnerInfosMarche() {
-//		controlEmmenager.ajouterDruide("Panoramix", 10, 5, 7);
-//		controlEmmenager.ajouterGaulois("Asterix", 6);
-//		controlEmmenager.ajouterGaulois("Obelix", 12);
-//	}
+	@Test
+	void testDonnerInfosMarche() {
+		Gaulois gaulois = new Gaulois("Jean",5);
+		village.ajouterHabitant(gaulois);
+		village.installerVendeur(gaulois, "fleurs", 10);
+		String[] infosAttendues = new String[] {"Jean","10","fleurs"};
+		assertArrayEquals(infosAttendues,controlAfficherMarche.donnerInfosMarche());
+	}
 	
 }
